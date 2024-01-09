@@ -109,19 +109,20 @@ const discountValue = inject('discountValue');
 
       <div class="flex justify-end mt-6">
         <form @submit.prevent="createPlugin">
+
+            <div class="mb-4">
+            <label for="daws" class="block text-sm font-medium">Brand</label>
+            <input style="width: 340px;" type="text" id="daws" v-model="newPlugin.daws" class="mt-1 p-2 bg-transparent border-b-2 border-0" required>
+          </div>
+
           <div class="mb-4">
-            <label for="name" class="text-sm font-medium">Name</label>
+            <label for="name" class="text-sm font-medium">Model</label>
             <input style="width: 340px;" type="text" id="name" v-model="newPlugin.name" class="mt-1 p-2 bg-transparent border-b-2 border-0" required>
           </div>
 
           <div class="mb-4">
             <label for="description" class="block text-sm font-medium">Description</label>
             <textarea style="width: 340px;" id="description" v-model="newPlugin.description" class="mt-1 p-2 bg-transparent border-b-2 border-0" required></textarea>
-          </div>
-
-          <div class="mb-4">
-            <label for="daws" class="block text-sm font-medium">Brand</label>
-            <input style="width: 340px;" type="text" id="daws" v-model="newPlugin.daws" class="mt-1 p-2 bg-transparent border-b-2 border-0" required>
           </div>
 
           <div class="mb-4">
@@ -150,19 +151,20 @@ const discountValue = inject('discountValue');
 
     <!-- Form for editing an existing plugin -->
     <form @submit.prevent="updatePlugin">
-      <div class="mb-4">
-        <label for="name" class="text-sm font-medium">Name</label>
+
+        <div class="mb-4">
+        <label for="daws" class="block text-sm font-medium">Brand</label>
+        <input style="width: 100%;" type="text" id="daws" v-model="editPlugin.daws" class="mt-1 p-2 bg-transparent border-b-2 border-gray-300 focus:outline-none" required>
+      </div>
+
+        <div class="mb-4">
+        <label for="name" class="text-sm font-medium">Model</label>
         <input style="width: 100%;" type="text" id="name" v-model="editPlugin.name" class="mt-1 p-2 bg-transparent border-b-2 border-gray-300 focus:outline-none" required>
       </div>
 
       <div class="mb-4">
         <label for="description" class="block text-sm font-medium">Description</label>
         <textarea style="width: 100%;" id="description" v-model="editPlugin.description" class="mt-1 p-2 bg-transparent border-b-2 border-gray-300 focus:outline-none" required></textarea>
-      </div>
-
-      <div class="mb-4">
-        <label for="daws" class="block text-sm font-medium">Brand</label>
-        <input style="width: 100%;" type="text" id="daws" v-model="editPlugin.daws" class="mt-1 p-2 bg-transparent border-b-2 border-gray-300 focus:outline-none" required>
       </div>
 
       <div class="mb-4">
