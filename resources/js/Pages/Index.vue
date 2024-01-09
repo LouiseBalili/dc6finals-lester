@@ -46,9 +46,7 @@ const discountValue = inject('discountValue');
     <div class="relative flex items-center w-full max-w-xs">
       <input v-model="startDate" type="date" id="startDate" name="startDate"
         class="text-gray-800 py-2 px-3 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 flex-grow">
-      <span class="absolute right-3 top-2.5">
-        <i class="fas fa-calendar text-gray-400"></i>
-      </span>
+
     </div>
   </div>
 
@@ -57,9 +55,7 @@ const discountValue = inject('discountValue');
     <div class="relative flex items-center w-full max-w-xs">
       <input v-model="endDate" type="date" id="endDate" name="endDate"
         class="text-gray-800 py-2 px-3 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 flex-grow">
-      <span class="absolute right-3 top-2.5">
-        <i class="fas fa-calendar text-gray-400"></i>
-      </span>
+
     </div>
   </div>
 
