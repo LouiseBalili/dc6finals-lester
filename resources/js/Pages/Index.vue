@@ -107,7 +107,7 @@ const discountValue = inject('discountValue');
   <div class="flex items-center justify-center min-h-screen">
     <div class="fixed inset-0 bg-gray-900 opacity-70"></div>
     <div class="relative bg-white dark:bg-blue-800 w-96 p-6 rounded shadow-lg text-gray-900 dark:text-gray-100">
-      <h2 class="text-2xl font-bold mb-4">Create Shoe</h2>
+      <h2 class="text-2xl font-bold mb-4">Create Phone</h2>
 
       <!-- Add your form elements for creating a new plugin -->
 
@@ -150,7 +150,7 @@ const discountValue = inject('discountValue');
 <div v-if="showEditModal" class="fixed inset-0 flex items-center justify-center overflow-y-auto z-50">
   <div class="fixed inset-0 bg-black opacity-50"></div>
   <div class="relative bg-white dark:bg-blue-800 w-96 p-6 rounded shadow-lg text-gray-900 dark:text-gray-100">
-    <h2 class="text-2xl font-bold mb-4">Edit Shoe</h2>
+    <h2 class="text-2xl font-bold mb-4">Edit Phone</h2>
 
     <!-- Form for editing an existing plugin -->
     <form @submit.prevent="updatePlugin">
