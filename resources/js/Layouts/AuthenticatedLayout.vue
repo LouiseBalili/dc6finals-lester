@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
@@ -20,14 +20,22 @@ const smallSizeThreshold = 100; // Adjust this threshold as needed
 const toggleSidebarWidth = () => {
   sidebarWidth.value = sidebarWidth.value === minSidebarWidth ? maxSidebarWidth : minSidebarWidth;
 };
+
+const isDarkMode = ref(JSON.parse(localStorage.getItem('theme')))
+
+const toggleDarkMode = () => {
+  isDarkMode.value = !isDarkMode.value;
+
+  localStorage.setItem('theme', isDarkMode.value);
+}
 </script>
 
 
 
 <template>
-  <div class="min-h-screen flex bg-gray-100 dark:bg-gray-900">
+  <div class="min-h-screen flex" :class="[ isDarkMode ? 'bg-gray-900' : 'bg-gray-100']">
     <!-- Sidebar -->
-    <aside :style="{ width: `${sidebarWidth}px`, transition: 'width 0.5s' }" class="bg-white dark:bg-gray-900 border-r border-gray-100 dark:border-gray-700">
+    <aside :style="{ width: `${sidebarWidth}px`, transition: 'width 0.5s' }" class="border-r border-gray-100 dark:border-gray-700" :class="[ isDarkMode ? 'bg-gray-900' : 'bg-white']">
       <!-- Resizable Button -->
       <div class="cursor-pointer" @click="toggleSidebarWidth">
         <div class="flex justify-end">
@@ -110,15 +118,24 @@ const toggleSidebarWidth = () => {
 
       </div>
 
-
-
     </aside>
 
 
 
     <!-- Main Content -->
-    <div class="flex-1 flex flex-col overflow-hidden">
-      <nav class="bg-white dark:bg-white border-b border-gray-100 dark:border-gray-700">
+    <div class="flex-1 flex flex-col overflow-hidden relative">
+
+      <button @click="toggleDarkMode" type="button" class="absolute bottom-4 right-4 w-8 h-8 flex justify-center items-center rounded-full border" :class="[ isDarkMode ? 'bg-gray-50' : 'bg-gray-700' ]">
+        <svg v-if="isDarkMode" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+        </svg>
+
+        <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-white">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+        </svg>        
+      </button>
+
+      <nav class="border-b border-gray-100 dark:border-gray-700" :class="[ isDarkMode ? 'bg-gray-700' : 'bg-white']">
         <!-- Primary Navigation Menu -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class=" h-16 mt-5">
@@ -225,14 +242,14 @@ const toggleSidebarWidth = () => {
       </nav>
 
       <!-- Page Heading -->
-      <header class="bg-white dark:bg-gray-800 shadow" v-if="$slots.header">
+      <header class="shadow" v-if="$slots.header">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <slot name="header" />
         </div>
       </header>
 
       <!-- Page Content -->
-      <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 dark:bg-white">
+      <main class="flex-1 overflow-x-hidden overflow-y-auto" :class="[ isDarkMode ? 'bg-gray-700' : 'bg-gray-100' ]">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <slot />
         </div>
